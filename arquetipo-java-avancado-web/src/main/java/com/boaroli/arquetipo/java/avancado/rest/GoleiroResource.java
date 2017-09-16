@@ -44,14 +44,9 @@ import com.boaroli.arquetipo.java.avancado.data.MemberRepository;
 import com.boaroli.arquetipo.java.avancado.model.Member;
 import com.boaroli.arquetipo.java.avancado.service.MemberRegistration;
 
-/**
- * JAX-RS Example
- * <p/>
- * This class produces a RESTful service to read/write the contents of the members table.
- */
-@Path("/members")
+@Path("/goleiros")
 @RequestScoped
-public class MemberResourceRESTService {
+public class GoleiroResource {
     @Inject
     private Logger log;
 
