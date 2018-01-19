@@ -14,11 +14,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.boaroli.arquetipo.java.avancado.rest;
+package com.boaroli.arquetipo.java.avancado.api;
 
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
+import com.boaroli.arquetipo.java.avancado.model.Goleiro;
+import com.boaroli.arquetipo.java.avancado.service.AbstractCrudService;
+import com.boaroli.arquetipo.java.avancado.service.GoleiroService;
+import com.boaroli.arquetipo.java.avancado.service.TestDoSuriService;
 
-@ApplicationPath("/api")
-public class JaxRsActivator extends Application {
+import javax.inject.Inject;
+import javax.ws.rs.Path;
+
+@Path("goleiros")
+public class GoleiroResource extends AbstractCrudResource<Goleiro> {
+
+    @Inject
+    private TestDoSuriService testDoSuriService;
+
+    @Inject
+    private GoleiroService service;
+
+    @Override
+    protected AbstractCrudService<Goleiro> getService() {
+        return service;
+    }
 }

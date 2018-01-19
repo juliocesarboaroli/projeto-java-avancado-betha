@@ -16,12 +16,15 @@
  */
 package com.boaroli.arquetipo.java.avancado.util;
 
-import java.util.logging.Logger;
+import com.boaroli.arquetipo.java.avancado.model.MyEntity;
 
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.util.logging.Logger;
 
 /**
  * This class uses CDI to alias Java EE resources, such as the persistence context, to CDI beans
@@ -44,5 +47,22 @@ public class Resources {
     @Produces
     public Logger produceLog(InjectionPoint injectionPoint) {
         return Logger.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
+    }
+
+    /**
+     * Produz repository de um tipo genérico
+     *
+     * @param injectionPoint
+     * @param em
+     * @param <T>
+     * @return O repository produzido
+     */
+    @Produces
+    public <T extends MyEntity> Repository<T> repositoryProducer(InjectionPoint injectionPoint, EntityManager em) {
+        Type[] arguments = ((ParameterizedType) injectionPoint.getType()).getActualTypeArguments();
+        if (arguments.length == 0)
+            throw new IllegalArgumentException("O Repository precisa de um tipo");
+        Class<T> clazz = (Class<T>) arguments[0];
+        return new Repository(clazz, em);
     }
 }

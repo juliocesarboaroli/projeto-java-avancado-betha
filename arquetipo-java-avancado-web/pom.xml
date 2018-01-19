@@ -91,6 +91,17 @@
                </exclusion>
            </exclusions>
        </dependency>
+       <!--<dependency>-->
+       <!--<groupId>javax</groupId>-->
+       <!--<artifactId>javaee-web-api</artifactId>-->
+       <!--<version>7.0</version>-->
+       <!--</dependency>-->
+
+       <dependency>
+           <groupId>org.ebaysf.web</groupId>
+           <artifactId>cors-filter</artifactId>
+           <version>1.0.0</version>
+       </dependency>
 
    </dependencies>
 
@@ -105,6 +116,14 @@
                <failOnMissingWebXml>false</failOnMissingWebXml>
             </configuration>
          </plugin>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <configuration>
+                  <source>1.8</source>
+                  <target>1.8</target>
+              </configuration>
+          </plugin>
       </plugins>
    </build>
 

@@ -58,7 +58,7 @@ Access the application
 The application will be running at the following URL: <http://localhost:8080/arquetipo-java-avancado-web>.
 
 1. Enter a name, email address, and Phone nubmer in the input field and click the _Register_ button.
-2. If the data entered is valid, the new member will be registered and added to the _Members_ display list.
+2. If the data entered is valid, the new goleiro will be registered and added to the _Members_ display list.
 3. If the data is not valid, you must fix the validation errors and try again.
 4. When the registration is successful, you will see a log message in the server console:
 
