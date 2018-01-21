@@ -2,8 +2,7 @@ package com.boaroli.arquetipo.java.avancado.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "CONVOCACOES")
@@ -14,16 +13,13 @@ public class Convocacao implements MyEntity, Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "DATA", nullable = false)
-    private LocalDate data;
-
-    @Column(name = "HORA", nullable = false)
-    private LocalTime hora;
+    @Column(name = "DATA_HORA", nullable = false)
+    private LocalDateTime dataHora;
 
     @Column(name = "ENDERECO", nullable = false)
     private String endereco;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "GOLEIRO", nullable = false,
             foreignKey = @ForeignKey(name = "FK_CONVOCACAO_GOLEIRO", value = ConstraintMode.CONSTRAINT))
     private Goleiro goleiro;
@@ -36,20 +32,12 @@ public class Convocacao implements MyEntity, Serializable {
         this.id = id;
     }
 
-    public LocalDate getData() {
-        return data;
+    public LocalDateTime getDataHora() {
+        return dataHora;
     }
 
-    public void setData(LocalDate data) {
-        this.data = data;
-    }
-
-    public LocalTime getHora() {
-        return hora;
-    }
-
-    public void setHora(LocalTime hora) {
-        this.hora = hora;
+    public void setDataHora(LocalDateTime dataHora) {
+        this.dataHora = dataHora;
     }
 
     public String getEndereco() {

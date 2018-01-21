@@ -1,5 +1,7 @@
 package com.boaroli.arquetipo.java.avancado.model;
 
+import org.hibernate.validator.constraints.Email;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -25,11 +27,17 @@ public class Goleiro implements MyEntity, Serializable {
     @Column(name = "ALTURA", precision = 10, scale = 2)
     private BigDecimal altura;
 
-    @NotNull(message = "O telefone é obrigatório")
     @Size(min = 10, max = 13, message = "O telefone deve ter no mínimo {min} e no máximo {max} caracteres")
     @Column(name = "TELEFONE", length = 13, nullable = false)
     @Pattern(regexp = "(\\([0-9]{2}\\)[0-9]{4,5}-?[0-9]{4})", message = "O telefone deve corresponder a (00)X0000-0000 ou (00)X00000000")
     private String telefone;
+
+    @Email
+    @Column(name = "EMAIL")
+    private String email;
+
+    @Column(name = "ENDERECO")
+    private String endereco;
 
     public Long getId() {
         return id;
@@ -61,5 +69,21 @@ public class Goleiro implements MyEntity, Serializable {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 }
